@@ -1,11 +1,14 @@
 package com.cognizant.learn.microsvc.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.cognizant.learn.microsvc.service.HelloService;
 
-@Controller
+//@Controller
+@RestController
+@RequestMapping("/")
 public class HelloController {
 
 	private HelloService helloService;
@@ -15,6 +18,7 @@ public class HelloController {
 		this.helloService = service;
 	}
 
+	@GetMapping(value="getMessage", produces="application/json")
 	public String getMessage() {
 		return this.helloService.getMessage();
 	}
